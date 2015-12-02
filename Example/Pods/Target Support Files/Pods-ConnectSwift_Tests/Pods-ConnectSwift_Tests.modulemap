@@ -1,0 +1,6 @@
+framework module Pods_ConnectSwift_Tests {
+  umbrella header "Pods-ConnectSwift_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

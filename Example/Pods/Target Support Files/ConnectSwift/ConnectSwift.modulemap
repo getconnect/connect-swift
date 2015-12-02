@@ -1,0 +1,6 @@
+framework module ConnectSwift {
+  umbrella header "ConnectSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}
