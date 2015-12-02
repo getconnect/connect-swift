@@ -14,34 +14,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let connect = Connect(projectId: "saqerqerqr", apiKey: "saqerqerqr")
+        let connect = Connect(projectId: "558792f9fb269a102466dadc",
+                              apiKey: "958603FFBCF9C63513BCEEFD0C6F90A3-F3FEA20ACD2D4C9F09B59571D1353897143058A0F91EF0D3569E6C52D46DA27A32E620784D566AE6A00CDBFE55361A659B9182A6A9E4B094835EEDF3BB24BCCA",
+                              baseUrl: "http://api.connect.test")
+        
         
         let query = connect.query("Purchases")
-            .select([
-                "count": .count,
-                "totalSales": .sum("price"),
-                "averagePrice": .avg("price"),
-                "minPrice": .min("price"),
-                "maxPrice": .max("price")
-                ])
-            .groupBy(["brand"])
-            .filter([
-                "price": .gt(100)
-                ])
-            .timeframe(.lastHour)
-            .interval(.minutely)
-        
-        let another = query.filter(["price": .lte(200)])
+            .select(["test": .count])
+            .timeframe(.thisYear)
         
         query.execute { (results) in
             //print(results)
         }
         
-        another.execute { (results) in
-            //print(results)
-        }
     }
-
 
 }
 

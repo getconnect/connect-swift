@@ -26,7 +26,7 @@ public enum Timeframe: String {
 }
 
 struct CustomTimeframe {
-    let from: NSDate
-    let to: NSDate
+    let start: NSDate
+    let end: NSDate
 }
 
