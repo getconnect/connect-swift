@@ -6,14 +6,7 @@
 //  Copyright © 2015 Connect. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-//! Project version number for ConnectSwift.
 FOUNDATION_EXPORT double ConnectSwiftVersionNumber;
-
-//! Project version string for ConnectSwift.
 FOUNDATION_EXPORT const unsigned char ConnectSwiftVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <ConnectSwift/PublicHeader.h>
-
-

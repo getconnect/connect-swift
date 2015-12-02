@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ACCCD71E1C0E7E7200DFCADD"
-               BuildableName = "ConnectSwiftiOS.framework"
-               BlueprintName = "ConnectSwiftiOS"
+               BlueprintIdentifier = "ACCCD7531C0E957C00DFCADD"
+               BuildableName = "ConnectSwiftc.framework"
+               BlueprintName = "ConnectSwiftc"
                ReferencedContainer = "container:ConnectSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ACCCD71E1C0E7E7200DFCADD"
-            BuildableName = "ConnectSwiftiOS.framework"
-            BlueprintName = "ConnectSwiftiOS"
+            BlueprintIdentifier = "ACCCD7531C0E957C00DFCADD"
+            BuildableName = "ConnectSwiftc.framework"
+            BlueprintName = "ConnectSwiftc"
             ReferencedContainer = "container:ConnectSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ACCCD71E1C0E7E7200DFCADD"
-            BuildableName = "ConnectSwiftiOS.framework"
-            BlueprintName = "ConnectSwiftiOS"
+            BlueprintIdentifier = "ACCCD7531C0E957C00DFCADD"
+            BuildableName = "ConnectSwiftc.framework"
+            BlueprintName = "ConnectSwiftc"
             ReferencedContainer = "container:ConnectSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

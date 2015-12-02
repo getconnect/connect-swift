@@ -4,6 +4,21 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ConnectSwift 2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>ConnectSwift WatchOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>ConnectSwift copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>ConnectSwift.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +28,21 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>ACCCD71E1C0E7E7200DFCADD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ACCCD74A1C0E955C00DFCADD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ACCCD7531C0E957C00DFCADD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ACCCD76A1C0E95AA00DFCADD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
