@@ -43,7 +43,7 @@ public struct Client {
             switch response.result {
             case .Success:
                 guard let value = response.result.value else {
-                    completion(Result.Failure(NSError(domain: "", code: 0, userInfo: nil)))
+                    completion(Result.Failure(NSError(domain: "", code: 0, userInfo: nil))) // TODO: add proper errors
                     return
                 }
                 let json = JSON(value)
