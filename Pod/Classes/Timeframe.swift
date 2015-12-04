@@ -25,7 +25,7 @@ public enum Timeframe: String {
     case lastYear = "last_year"
 }
 
-struct CustomTimeframe {
+public struct CustomTimeframe {
     let start: NSDate
     let end: NSDate
 }

@@ -18,14 +18,13 @@ class ViewController: UIViewController {
             apiKey: "958603FFBCF9C63513BCEEFD0C6F90A3-F3FEA20ACD2D4C9F09B59571D1353897143058A0F91EF0D3569E6C52D46DA27A32E620784D566AE6A00CDBFE55361A659B9182A6A9E4B094835EEDF3BB24BCCA",
             baseUrl: "http://api.connect.test")
         
-        
-        let query = connect.query("Purchases")
+        connect.query("purchases")
             .select(["test": .count])
             .timeframe(.thisYear)
+            .execute { (results) in
+                print(results)
+            }
         
-        query.execute { (results) in
-            //print(results)
-        }
         
     }
     

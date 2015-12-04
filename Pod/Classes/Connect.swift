@@ -23,8 +23,8 @@ public class Connect {
     }
     
     public func query(collectionName: String) -> QueryBuilder {
-        let queryConfig = QueryConfig(config: config, collection: collectionName)
-        return QueryBuilder(config: queryConfig)
+        let queryConfig = QueryConfig(connectConfig: config, collection: collectionName)
+        return Query(config: queryConfig)
     }
     
 }

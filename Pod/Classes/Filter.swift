@@ -9,22 +9,24 @@
 import Foundation
 
 public enum Comparison {
-    case eq(Equatable)
-    case neq(Equatable)
-    case gt(Comparable)
-    case gte(Comparable)
-    case lt(Comparable)
-    case lte(Comparable)
-    case exists(Equatable)
+    case eq(AnyObject)
+    case neq(AnyObject)
+    case gt(AnyObject)
+    case gte(AnyObject)
+    case lt(AnyObject)
+    case lte(AnyObject)
+    case exists
+    case doesNotExist
     case startsWith(String)
     case endsWith(String)
     case contains(String)
+    case inside([AnyObject])
 }
 public typealias Filter = [String: Comparison]
 
 extension CollectionType where Generator.Element == (String, Comparison) {
-    var jsonObject: [String: Any] {
-        var map = [String: Any]()
+    var jsonObject: [String: AnyObject] {
+        var map = [String: AnyObject]()
         for (field, comparison) in self {
             switch comparison {
             case let .eq(value):
@@ -39,14 +41,18 @@ extension CollectionType where Generator.Element == (String, Comparison) {
                 map[field] = ["lt": value]
             case let .lte(value):
                 map[field] = ["lte": value]
-            case let .exists(value):
-                map[field] = ["exists": value]
+            case .exists:
+                map[field] = ["exists": true]
+            case .doesNotExist:
+                map[field] = ["exists": false]
             case let .startsWith(value):
                 map[field] = ["startsWith": value]
             case let .endsWith(value):
                 map[field] = ["endsWith": value]
             case let .contains(value):
                 map[field] = ["contains": value]
+            case let .inside(value):
+                map[field] = ["in": value]
             }
         }
         return map

@@ -19,8 +19,8 @@ public enum Aggregation {
 public typealias Select = [String: Aggregation]
 
 extension CollectionType where Generator.Element == (String, Aggregation) {
-    var jsonObject: [String: Any] {
-        var map = [String: Any]()
+    var jsonObject: [String: AnyObject] {
+        var map = [String: AnyObject]()
         for (alias, aggregation) in self {
             switch aggregation {
             case .count:

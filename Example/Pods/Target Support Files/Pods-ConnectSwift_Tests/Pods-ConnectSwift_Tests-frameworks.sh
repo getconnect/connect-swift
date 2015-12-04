@@ -86,8 +86,10 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-ConnectSwift_Tests/Alamofire.framework"
   install_framework "Pods-ConnectSwift_Tests/ConnectSwift.framework"
+  install_framework "Pods-ConnectSwift_Tests/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-ConnectSwift_Tests/Alamofire.framework"
   install_framework "Pods-ConnectSwift_Tests/ConnectSwift.framework"
+  install_framework "Pods-ConnectSwift_Tests/SwiftyJSON.framework"
 fi

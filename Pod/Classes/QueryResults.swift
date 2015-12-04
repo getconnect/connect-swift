@@ -8,18 +8,33 @@
 
 import Foundation
 
-struct Metadata {
-    let groups: GroupBy
-    let interval: String?
-    let timezone: String?
+public typealias QueryCallback = (QueryResults) -> Void
+public typealias IntervalQueryCallback = (IntervalQueryResults) -> Void
+
+public protocol Metadata {
+    var groups: [String] { get }
+    var interval: String? { get }
+    var timezone: String? { get }
 }
 
-struct QueryResults {
-    let metadata: Metadata
-    let results: [String: Any]
+public typealias QueryResultItem = [String: Any]
+
+public protocol QueryResults {
+    var metadata: Metadata { get }
+    var results: [QueryResultItem] { get }
 }
 
-struct IntervalQueryResults {
-    let metadata: Metadata
-    let results: [String: Any]
+public protocol ResultItemInterval {
+    var start: NSDate { get }
+    var end: NSDate { get }
+}
+
+public protocol IntervalQueryResultItem {
+    var interval: ResultItemInterval { get }
+    var results: [QueryResultItem] { get }
+}
+
+public protocol IntervalQueryResults {
+    var metadata: Metadata { get }
+    var results: [IntervalQueryResultItem] { get }
 }
