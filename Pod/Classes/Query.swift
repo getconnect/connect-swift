@@ -28,10 +28,16 @@ public struct Query {
     }
     
     public var jsonObject: [String: AnyObject] {
-        return [
+        var result: [String: AnyObject] = [
             "select": self.select.jsonObject,
+            "groupBy": self.groupBy,
             "filter": self.filter.jsonObject
         ]
+        if let timeframe = timeframe {
+            result["timeframe"] = timeframe.rawValue
+        }
+        result["interval"] = interval?.rawValue
+        return result
     }
     
     init(config: QueryConfig) {

@@ -240,7 +240,6 @@
 			children = (
 				1A3FB1D02C3A4B1CCE60BCFBB1F1AA2C /* Connect.swift */,
 				AFDF43B7FD04BBD709AB565C963BE848 /* Filter.swift */,
-				F4BCB24D7E181D8B40C2696D1FF084B9 /* Helpers.swift */,
 				ACCCD78F1C1014BB00DFCADD /* Query.swift */,
 				5FEC0DC88871533852F667A5C8386E92 /* QueryBuilder.swift */,
 				ACCCD78D1C10145D00DFCADD /* QueryExecuter.swift */,
@@ -250,6 +249,7 @@
 				250FDA34D796FC4103401874BCB6B5AB /* Timeframe.swift */,
 				109759FE5D742BADFE478E36CF0C3D16 /* TimeInterval.swift */,
 				ACCCD78B1C100F9F00DFCADD /* Result.swift */,
+				F4BCB24D7E181D8B40C2696D1FF084B9 /* Helpers.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

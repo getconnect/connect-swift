@@ -7,34 +7,63 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 public typealias QueryCallback = (QueryResults) -> Void
 public typealias IntervalQueryCallback = (IntervalQueryResults) -> Void
 
-public protocol Metadata {
-    var groups: [String] { get }
-    var interval: String? { get }
-    var timezone: String? { get }
+public struct Metadata {
+    let groups: [String]
+    let interval: String?
+    let timezone: String?
+    
+    init(json: JSON) {
+        groups = json["groups"].arrayValue.map { $0.string! }
+        interval = json["interval"].string
+        timezone = json["timezone"].string
+    }
 }
 
-public typealias QueryResultItem = [String: Any]
+public typealias QueryResultItem = [String: AnyObject]
 
-public protocol QueryResults {
-    var metadata: Metadata { get }
-    var results: [QueryResultItem] { get }
+public struct QueryResults {
+    public let metadata: Metadata
+    public let results: [QueryResultItem]
+    
+    init(json: JSON) {
+        metadata = Metadata(json: json["metadata"])
+        results = json["results"].arrayValue.map { $0.dictionaryObject! }
+    }
 }
 
-public protocol ResultItemInterval {
-    var start: NSDate { get }
-    var end: NSDate { get }
+public struct ResultItemInterval {
+    public let start: NSDate
+    public let end: NSDate
+    
+    init(json: JSON) {
+        let startDate = json["start"].stringValue
+        let endDate = json["end"].stringValue
+        start = NSDateFormatter.iso8601Formatter.dateFromString(startDate)!
+        end = NSDateFormatter.iso8601Formatter.dateFromString(endDate)!
+    }
 }
 
-public protocol IntervalQueryResultItem {
-    var interval: ResultItemInterval { get }
-    var results: [QueryResultItem] { get }
+public struct IntervalQueryResultItem {
+    public let interval: ResultItemInterval
+    public let results: [QueryResultItem]
+    
+    init(json: JSON) {
+        interval = ResultItemInterval(json: json["interval"])
+        results = json["results"].arrayValue.map { $0.dictionaryObject! }
+    }
 }
 
-public protocol IntervalQueryResults {
-    var metadata: Metadata { get }
-    var results: [IntervalQueryResultItem] { get }
+public struct IntervalQueryResults {
+    public let metadata: Metadata
+    public let results: [IntervalQueryResultItem]
+    
+    init(json: JSON) {
+        metadata = Metadata(json: json["metadata"])
+        results = json["results"].arrayValue.map { IntervalQueryResultItem(json: $0) }
+    }
 }

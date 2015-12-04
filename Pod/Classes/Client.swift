@@ -29,7 +29,7 @@ public struct Client {
         self.connectConfig = connectConfig
     }
     
-    func query(collection: String, parameters: [String: AnyObject]) {
+    func query(collection: String, parameters: [String: AnyObject], completion: Result<JSON, NSError> -> Void) {
         
         let url = NSURL(string: collection, relativeToURL: queryUrl)! // TODO remove this force un-wrap
         
@@ -42,12 +42,14 @@ public struct Client {
             (response) in
             switch response.result {
             case .Success:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    print("JSON: \(json)")
+                guard let value = response.result.value else {
+                    completion(Result.Failure(NSError(domain: "", code: 0, userInfo: nil)))
+                    return
                 }
+                let json = JSON(value)
+                completion(Result.Success(json))
             case .Failure(let error):
-                print(error)
+                completion(Result.Failure(error))
             }
         }
     }

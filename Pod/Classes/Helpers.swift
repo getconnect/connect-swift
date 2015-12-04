@@ -20,4 +20,14 @@ func + <K,V>(left: [K:V], right: [K:V]) -> [K:V]
     return map
 }
 
+extension NSDateFormatter {
+    
+    static var iso8601Formatter: NSDateFormatter {
+        let dateFormatter = NSDateFormatter()
+        let enUSPosixLocale = NSLocale(localeIdentifier: "en_US_POSIX")
+        dateFormatter.locale = enUSPosixLocale
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        return dateFormatter
+    }
 
+}

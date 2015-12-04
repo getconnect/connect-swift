@@ -11,21 +11,37 @@ import Foundation
 public protocol QueryExecuter {
     func execute(completion: Result<QueryResults, NSError> -> Void)
 }
+extension QueryExecuter where Self:QueryBuilder {
+    
+    public func execute(completion: Result<QueryResults, NSError> -> Void) {
+        apiClient.query(collectionName, parameters: jsonObject) {
+            (result) in
+            switch result {
+            case .Success(let json):
+                let queryResult = QueryResults(json: json)
+                completion(Result.Success(queryResult))
+            case .Failure(let error):
+                completion(Result.Failure(error))
+            }
+        }
+    }
+}
 
 public protocol IntervalQueryExecuter {
     func execute(completion: Result<IntervalQueryResults, NSError> -> Void)
 }
-
-extension QueryExecuter where Self:QueryBuilder {
-    public func execute(completion: Result<QueryResults, NSError> -> Void) {
-        apiClient.query(collectionName, parameters: jsonObject)
-        
-    }
-}
-
 extension IntervalQueryExecuter where Self:IntervalQueryBuilder {
+    
     public func execute(completion: Result<IntervalQueryResults, NSError> -> Void) {
-        apiClient.query(collectionName, parameters: jsonObject)
-        
+        apiClient.query(collectionName, parameters: jsonObject) {
+            (result) in
+            switch result {
+            case .Success(let json):
+                let intervalQueryResult = IntervalQueryResults(json: json)
+                completion(Result.Success(intervalQueryResult))
+            case .Failure(let error):
+                completion(Result.Failure(error))
+            }
+        }
     }
 }
