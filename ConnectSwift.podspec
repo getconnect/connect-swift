@@ -9,6 +9,7 @@ Pod::Spec.new do |s|
                    DESC
   s.homepage     = "https://getconnect.io"
   s.license      = "MIT"
+  s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "chadedrupt" => "chad@getconnect.io" }
 
   s.ios.deployment_target = '8.0'
