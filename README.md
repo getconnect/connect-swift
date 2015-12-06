@@ -5,11 +5,10 @@
 [![License](https://img.shields.io/cocoapods/l/ConnectSwift.svg?style=flat)](http://cocoapods.org/pods/ConnectSwift)
 [![Platform](https://img.shields.io/cocoapods/p/ConnectSwift.svg?style=flat)](http://cocoapods.org/pods/ConnectSwift)
 
-## Usage
+## WIP. 
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
+Still early days for this library, so syntax may change at anytime. 
+Contributions from the community are welcomed.
 
 ## Installation
 
@@ -20,9 +19,6 @@ it, simply add the following line to your Podfile:
 pod "ConnectSwift"
 ```
 
-## Author
-
-chadedrupt, chad.edrupt@me.com
 
 ## License
 
