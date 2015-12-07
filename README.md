@@ -1,6 +1,6 @@
 # ConnectSwift
 
-[![CI Status](http://img.shields.io/travis/getconnect/ConnectSwift.svg?style=flat)](https://travis-ci.org/getconnect/ConnectSwift)
+[![CI Status](http://img.shields.io/travis/getconnect/connect-swift.svg?style=flat)](https://travis-ci.org/getconnect/connect-swift)
 [![Version](https://img.shields.io/cocoapods/v/ConnectSwift.svg?style=flat)](http://cocoapods.org/pods/ConnectSwift)
 [![License](https://img.shields.io/cocoapods/l/ConnectSwift.svg?style=flat)](http://cocoapods.org/pods/ConnectSwift)
 [![Platform](https://img.shields.io/cocoapods/p/ConnectSwift.svg?style=flat)](http://cocoapods.org/pods/ConnectSwift)
