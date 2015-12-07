@@ -1,0 +1,7 @@
+
+language: swift
+podfile: Example/Podfile
+xcode_workspace: Example/ConnectSwift.xcworkspace
+xcode_scheme: ConnectSwift-Example
+xcode_sdk: iphonesimulator9.1
+osx_image: xcode7.1
