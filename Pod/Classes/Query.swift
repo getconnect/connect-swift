@@ -16,7 +16,6 @@ public struct Query {
     let groupBy: GroupBy
     let filter: Filter
     let timeframe: Timeframe?
-    let customTimeframe: CustomTimeframe?
     let interval: TimeInterval?
     
     public var apiClient: Client {
@@ -34,7 +33,7 @@ public struct Query {
             "filter": self.filter.jsonObject
         ]
         if let timeframe = timeframe {
-            result["timeframe"] = timeframe.rawValue
+            result["timeframe"] = timeframe.jsonObject
         }
         result["interval"] = interval?.rawValue
         return result
@@ -48,18 +47,16 @@ public struct Query {
         filter = Filter()
         
         timeframe = nil
-        customTimeframe = nil
         interval = nil
     }
     
-    init(config: QueryConfig, select: Select, groupBy: GroupBy, filter: Filter, timeframe: Timeframe?, customTimeframe: CustomTimeframe?, interval: TimeInterval?) {
+    init(config: QueryConfig, select: Select, groupBy: GroupBy, filter: Filter, timeframe: Timeframe?, interval: TimeInterval?) {
         self.config = config
         
         self.select = select
         self.groupBy = groupBy
         self.filter = filter
         self.timeframe = timeframe
-        self.customTimeframe = customTimeframe
         self.interval = interval
     }
     

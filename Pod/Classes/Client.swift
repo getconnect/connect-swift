@@ -15,10 +15,13 @@ public struct Client {
     let connectConfig: ConnectConfig
     
     var headers: [String: String] {
-        return [
-            "X-Project-Id": connectConfig.projectId,
-            "X-Api-Key": connectConfig.apiKey
-        ]
+        if let projectId = connectConfig.projectId {
+            return [
+                "X-Project-Id": projectId,
+                "X-Api-Key": connectConfig.apiKey
+            ]
+        }
+        return [ "X-Api-Key": connectConfig.apiKey ]
     }
     
     var queryUrl: NSURL {

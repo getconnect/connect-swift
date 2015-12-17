@@ -9,7 +9,7 @@
 import Foundation
 
 struct ConnectConfig {
-    let projectId: String
+    let projectId: String?
     let apiKey: String
     let baseUrl: String
 }
@@ -18,7 +18,7 @@ public class Connect {
     
     var config: ConnectConfig
     
-    public init(projectId: String, apiKey: String, baseUrl: String = "https://api.getconnect.io") {
+    public init(projectId: String?, apiKey: String, baseUrl: String = "https://api.getconnect.io") {
         config = ConnectConfig(projectId: projectId, apiKey: apiKey, baseUrl: baseUrl)
     }
     
