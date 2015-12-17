@@ -18,3 +18,11 @@ extension NSDateFormatter {
     }
     
 }
+
+extension NSDate {
+    
+    var iso8601String: String {
+        return NSDateFormatter.iso8601Formatter.stringFromDate(self)
+    }
+    
+}

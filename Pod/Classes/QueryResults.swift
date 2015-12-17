@@ -29,10 +29,12 @@ public typealias QueryResultItem = [String: AnyObject]
 public struct QueryResults {
     public let metadata: Metadata
     public let results: [QueryResultItem]
+    public let resultsJSON: JSON
     
     init(json: JSON) {
         metadata = Metadata(json: json["metadata"])
         results = json["results"].arrayValue.map { $0.dictionaryObject! }
+        resultsJSON = json["results"]
     }
 }
 
@@ -51,19 +53,23 @@ public struct ResultItemInterval {
 public struct IntervalQueryResultItem {
     public let interval: ResultItemInterval
     public let results: [QueryResultItem]
+    public let resultJSON: JSON
     
     init(json: JSON) {
         interval = ResultItemInterval(json: json["interval"])
         results = json["results"].arrayValue.map { $0.dictionaryObject! }
+        resultJSON = json
     }
 }
 
 public struct IntervalQueryResults {
     public let metadata: Metadata
     public let results: [IntervalQueryResultItem]
+    public let resultJSON: JSON
     
     init(json: JSON) {
         metadata = Metadata(json: json["metadata"])
         results = json["results"].arrayValue.map { IntervalQueryResultItem(json: $0) }
+        resultJSON = json
     }
 }

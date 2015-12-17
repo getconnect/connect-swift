@@ -31,7 +31,6 @@ public protocol QueryBuilder: Queryable, QueryExecuter {
     func filter(filter: Filter) -> QueryBuilder
     
     func timeframe(timeframe: Timeframe) -> QueryBuilder
-    func timeframe(start: NSDate, end: NSDate) -> QueryBuilder
     
     func interval(interval: TimeInterval) -> IntervalQueryBuilder
 }
@@ -46,7 +45,6 @@ public protocol IntervalQueryBuilder: Queryable, IntervalQueryExecuter {
     func filter(filter: Filter) -> IntervalQueryBuilder
     
     func timeframe(timeframe: Timeframe) -> IntervalQueryBuilder
-    func timeframe(start: NSDate, end: NSDate) -> IntervalQueryBuilder
     
     func interval(interval: TimeInterval) -> IntervalQueryBuilder
 }
@@ -54,54 +52,48 @@ public protocol IntervalQueryBuilder: Queryable, IntervalQueryExecuter {
 extension Query: QueryBuilder {
     
     public func select(select: [String: Aggregation]) -> QueryBuilder {
-        return Query(config: config, select: self.select + select, groupBy: groupBy, filter: filter, timeframe: timeframe, customTimeframe: customTimeframe, interval: interval)
+        return Query(config: config, select: self.select + select, groupBy: groupBy, filter: filter, timeframe: timeframe, interval: interval)
     }
     
     public func groupBy(groupBy: String) -> QueryBuilder {
-        return Query(config: config, select: select, groupBy: self.groupBy + [groupBy], filter: filter, timeframe: timeframe, customTimeframe: customTimeframe, interval: interval)
+        return Query(config: config, select: select, groupBy: self.groupBy + [groupBy], filter: filter, timeframe: timeframe, interval: interval)
     }
     public func groupBy(groupBy: [String]) -> QueryBuilder {
-        return Query(config: config, select: select, groupBy: self.groupBy + groupBy, filter: filter, timeframe: timeframe, customTimeframe: customTimeframe, interval: interval)
+        return Query(config: config, select: select, groupBy: self.groupBy + groupBy, filter: filter, timeframe: timeframe, interval: interval)
     }
     
     public func filter(filter: Filter) -> QueryBuilder {
-        return Query(config: config, select: select, groupBy: groupBy, filter: self.filter + filter, timeframe: timeframe, customTimeframe: customTimeframe, interval: interval)
+        return Query(config: config, select: select, groupBy: groupBy, filter: self.filter + filter, timeframe: timeframe, interval: interval)
     }
     
     public func timeframe(timeframe: Timeframe) -> QueryBuilder {
-        return Query(config: config, select: select, groupBy: groupBy, filter: filter, timeframe: timeframe, customTimeframe: nil, interval: interval)
-    }
-    public func timeframe(start: NSDate, end: NSDate) -> QueryBuilder {
-        return Query(config: config, select: select, groupBy: groupBy, filter: filter, timeframe: nil, customTimeframe: CustomTimeframe(start: start, end: end), interval: interval)
+        return Query(config: config, select: select, groupBy: groupBy, filter: filter, timeframe: timeframe, interval: interval)
     }
     
     public func interval(interval: TimeInterval) -> IntervalQueryBuilder {
-        return Query(config: config, select: select, groupBy: groupBy, filter: filter, timeframe: timeframe, customTimeframe: customTimeframe, interval: interval)
+        return Query(config: config, select: select, groupBy: groupBy, filter: filter, timeframe: timeframe, interval: interval)
     }
 }
 
 extension Query: IntervalQueryBuilder {
     
     public func select(select: [String: Aggregation]) -> IntervalQueryBuilder {
-        return Query(config: config, select: self.select + select, groupBy: groupBy, filter: filter, timeframe: timeframe, customTimeframe: customTimeframe, interval: interval)
+        return Query(config: config, select: self.select + select, groupBy: groupBy, filter: filter, timeframe: timeframe, interval: interval)
     }
     
     public func groupBy(groupBy: String) -> IntervalQueryBuilder {
-        return Query(config: config, select: select, groupBy: self.groupBy + [groupBy], filter: filter, timeframe: timeframe, customTimeframe: customTimeframe, interval: interval)
+        return Query(config: config, select: select, groupBy: self.groupBy + [groupBy], filter: filter, timeframe: timeframe, interval: interval)
     }
     public func groupBy(groupBy: [String]) -> IntervalQueryBuilder {
-        return Query(config: config, select: select, groupBy: self.groupBy + groupBy, filter: filter, timeframe: timeframe, customTimeframe: customTimeframe, interval: interval)
+        return Query(config: config, select: select, groupBy: self.groupBy + groupBy, filter: filter, timeframe: timeframe, interval: interval)
     }
     
     public func filter(filter: Filter) -> IntervalQueryBuilder {
-        return Query(config: config, select: select, groupBy: groupBy, filter: self.filter + filter, timeframe: timeframe, customTimeframe: customTimeframe, interval: interval)
+        return Query(config: config, select: select, groupBy: groupBy, filter: self.filter + filter, timeframe: timeframe, interval: interval)
     }
     
     public func timeframe(timeframe: Timeframe) -> IntervalQueryBuilder {
-        return Query(config: config, select: select, groupBy: groupBy, filter: filter, timeframe: timeframe, customTimeframe: nil, interval: interval)
-    }
-    public func timeframe(start: NSDate, end: NSDate) -> IntervalQueryBuilder {
-        return Query(config: config, select: select, groupBy: groupBy, filter: filter, timeframe: nil, customTimeframe: CustomTimeframe(start: start, end: end), interval: interval)
+        return Query(config: config, select: select, groupBy: groupBy, filter: filter, timeframe: timeframe, interval: interval)
     }
 }
 
