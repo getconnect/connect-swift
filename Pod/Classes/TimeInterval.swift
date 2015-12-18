@@ -9,11 +9,11 @@
 import Foundation
 
 public enum TimeInterval: String {
-    case minutely = "minutely"
-    case hourly = "hourly"
-    case daily = "daily"
-    case weekly = "weekly"
-    case monthly = "monthly"
-    case quarterly = "quarterly"
-    case yearly = "yearly"
+    case Minutely = "minutely"
+    case Hourly = "hourly"
+    case Daily = "daily"
+    case Weekly = "weekly"
+    case Monthly = "monthly"
+    case Quarterly = "quarterly"
+    case Yearly = "yearly"
 }

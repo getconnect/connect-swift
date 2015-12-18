@@ -9,11 +9,11 @@
 import Foundation
 
 public enum Aggregation {
-    case count
-    case sum(String)
-    case avg(String)
-    case min(String)
-    case max(String)
+    case Count
+    case Sum(String)
+    case Avg(String)
+    case Min(String)
+    case Max(String)
 }
 
 public typealias Select = [String: Aggregation]
@@ -23,15 +23,15 @@ extension CollectionType where Generator.Element == (String, Aggregation) {
         var map = [String: AnyObject]()
         for (alias, aggregation) in self {
             switch aggregation {
-            case .count:
+            case .Count:
                 map[alias] = "count"
-            case let .sum(field):
+            case let .Sum(field):
                 map[alias] = ["sum": field]
-            case let .avg(field):
+            case let .Avg(field):
                 map[alias] = ["avg": field]
-            case let .min(field):
+            case let .Min(field):
                 map[alias] = ["min": field]
-            case let .max(field):
+            case let .Max(field):
                 map[alias] = ["max": field]
             }
         }

@@ -9,8 +9,8 @@
 import Foundation
 
 public struct CustomTimeframe {
-    let start: NSDate
-    let end: NSDate
+    public let start: NSDate
+    public let end: NSDate
 }
 
 extension CustomTimeframe: Equatable { }
@@ -20,56 +20,56 @@ public func ==(lhs: CustomTimeframe, rhs: CustomTimeframe) -> Bool {
 
 public enum Timeframe {
     
-    case thisMinute
-    case lastMinute
-    case thisHour
-    case lastHour
-    case today
-    case yesterday
-    case thisWeek
-    case lastWeek
-    case thisMonth
-    case lastMonth
-    case thisQuarter
-    case lastQuarter
-    case thisYear
-    case lastYear
-    case custom(CustomTimeframe)
+    case ThisMinute
+    case LastMinute
+    case ThisHour
+    case LastHour
+    case Today
+    case Yesterday
+    case ThisWeek
+    case LastWeek
+    case ThisMonth
+    case LastMonth
+    case ThisQuarter
+    case LastQuarter
+    case ThisYear
+    case LastYear
+    case Custom(CustomTimeframe?)
     
     var jsonObject: AnyObject {
         switch self {
-        case .thisMinute:
+        case .ThisMinute:
             return "this_minute"
-        case .lastMinute:
+        case .LastMinute:
             return "last_minute"
-        case .thisHour:
+        case .ThisHour:
             return "this_hour"
-        case .lastHour:
+        case .LastHour:
             return "last_hour"
-        case .today:
+        case .Today:
             return "today"
-        case .yesterday:
+        case .Yesterday:
             return "yesterday"
-        case .thisWeek:
+        case .ThisWeek:
             return "this_week"
-        case .lastWeek:
+        case .LastWeek:
             return "last_week"
-        case .thisMonth:
+        case .ThisMonth:
             return "this_month"
-        case .lastMonth:
+        case .LastMonth:
             return "last_month"
-        case .thisQuarter:
+        case .ThisQuarter:
             return "this_quarter"
-        case .lastQuarter:
+        case .LastQuarter:
             return "last_quarter"
-        case .thisYear:
+        case .ThisYear:
             return "this_year"
-        case .lastYear:
-            return "last_year"
-        case .custom(let customTimeframe):
+        case .LastYear:
+            return "Last_year"
+        case .Custom(let customTimeframe):
             return [
-                "start": customTimeframe.start.iso8601String,
-                "end": customTimeframe.end.iso8601String
+                "start": customTimeframe?.start.iso8601String ?? "",
+                "end": customTimeframe?.end.iso8601String ?? ""
             ]
         }
     }
@@ -78,23 +78,23 @@ public enum Timeframe {
 extension Timeframe: Equatable { }
 public func ==(lhs: Timeframe, rhs: Timeframe) -> Bool {
     switch (lhs, rhs) {
-    case (.today, .today):
+    case (.Today, .Today):
         return true
-    case (.yesterday, .yesterday):
+    case (.Yesterday, .Yesterday):
         return true
-    case (.thisWeek, .thisWeek):
+    case (.ThisWeek, .ThisWeek):
         return true
-    case (.lastWeek, .lastWeek):
+    case (.LastWeek, .LastWeek):
         return true
-    case (.thisMonth, .thisMonth):
+    case (.ThisMonth, .ThisMonth):
         return true
-    case (.lastMonth, .lastMonth):
+    case (.LastMonth, .LastMonth):
         return true
-    case (.thisYear, .thisYear):
+    case (.ThisYear, .ThisYear):
         return true
-    case (.lastYear, .lastYear):
+    case (.LastYear, .LastYear):
         return true
-    case (let .custom(firstCustomDate), let .custom(secondCustomDate)):
+    case (let .Custom(firstCustomDate), let .Custom(secondCustomDate)):
         return firstCustomDate == secondCustomDate
     default:
         return false

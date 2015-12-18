@@ -19,11 +19,10 @@ class ViewController: UIViewController {
             apiKey: "F72EE2F564DBE33DF66171A775CD7B4E-7EE5844C84B9E3F88F87FBD0421B79063CB13858C93C4E0ED1F346522057283D8CC22C8FEDE3E8E088CD91B9BDAA25BE2AF8A3A5320C87282EB96FA98E8E8369")
         
         connect.query("orders")
-            .select(["test": .count])
-            .timeframe(.thisYear)
+            .select(["test": .Count])
+            .timeframe(.ThisYear)
             .groupBy("pizza.type.value")
-            .interval(.weekly)
-            .timeframe(.thisYear)
+            .interval(.Weekly)
             .execute {
                 (result) in
                 switch result {
@@ -33,8 +32,7 @@ class ViewController: UIViewController {
                     print(error)
                 }
             }
-        
-        
+
     }
     
 }

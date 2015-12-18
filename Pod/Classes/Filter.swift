@@ -9,18 +9,18 @@
 import Foundation
 
 public enum Comparison {
-    case eq(AnyObject)
-    case neq(AnyObject)
-    case gt(AnyObject)
-    case gte(AnyObject)
-    case lt(AnyObject)
-    case lte(AnyObject)
-    case exists
-    case doesNotExist
-    case startsWith(String)
-    case endsWith(String)
-    case contains(String)
-    case inside([AnyObject])
+    case Eq(AnyObject)
+    case Neq(AnyObject)
+    case Gt(AnyObject)
+    case Gte(AnyObject)
+    case Lt(AnyObject)
+    case Lte(AnyObject)
+    case Exists
+    case DoesNotExist
+    case StartsWith(String)
+    case EndsWith(String)
+    case Contains(String)
+    case Inside([AnyObject])
 }
 public typealias Filter = [String: Comparison]
 
@@ -29,29 +29,29 @@ extension CollectionType where Generator.Element == (String, Comparison) {
         var map = [String: AnyObject]()
         for (field, comparison) in self {
             switch comparison {
-            case let .eq(value):
+            case let .Eq(value):
                 map[field] = ["eq": value]
-            case let .neq(value):
+            case let .Neq(value):
                 map[field] = ["neq": value]
-            case let .gt(value):
+            case let .Gt(value):
                 map[field] = ["gt": value]
-            case let .gte(value):
+            case let .Gte(value):
                 map[field] = ["gte": value]
-            case let .lt(value):
+            case let .Lt(value):
                 map[field] = ["lt": value]
-            case let .lte(value):
+            case let .Lte(value):
                 map[field] = ["lte": value]
-            case .exists:
+            case .Exists:
                 map[field] = ["exists": true]
-            case .doesNotExist:
+            case .DoesNotExist:
                 map[field] = ["exists": false]
-            case let .startsWith(value):
+            case let .StartsWith(value):
                 map[field] = ["startsWith": value]
-            case let .endsWith(value):
+            case let .EndsWith(value):
                 map[field] = ["endsWith": value]
-            case let .contains(value):
+            case let .Contains(value):
                 map[field] = ["contains": value]
-            case let .inside(value):
+            case let .Inside(value):
                 map[field] = ["in": value]
             }
         }
