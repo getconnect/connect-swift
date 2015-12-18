@@ -11,6 +11,11 @@ import Foundation
 public struct CustomTimeframe {
     public let start: NSDate
     public let end: NSDate
+    
+    public init(start: NSDate, end: NSDate) {
+        self.start = start
+        self.end = end
+    }
 }
 
 extension CustomTimeframe: Equatable { }
