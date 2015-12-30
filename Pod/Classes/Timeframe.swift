@@ -8,21 +8,6 @@
 
 import Foundation
 
-public struct CustomTimeframe {
-    public let start: NSDate
-    public let end: NSDate
-    
-    public init(start: NSDate, end: NSDate) {
-        self.start = start
-        self.end = end
-    }
-}
-
-extension CustomTimeframe: Equatable { }
-public func ==(lhs: CustomTimeframe, rhs: CustomTimeframe) -> Bool {
-    return lhs.start == rhs.start && lhs.end == rhs.end
-}
-
 public enum Timeframe {
     
     case ThisMinute
@@ -39,7 +24,7 @@ public enum Timeframe {
     case LastQuarter
     case ThisYear
     case LastYear
-    case Custom(CustomTimeframe?)
+    case Custom(NSDate?, NSDate?)
     
     var jsonObject: AnyObject {
         switch self {
@@ -71,10 +56,10 @@ public enum Timeframe {
             return "this_year"
         case .LastYear:
             return "Last_year"
-        case .Custom(let customTimeframe):
+        case .Custom(let start, let end):
             return [
-                "start": customTimeframe?.start.iso8601String ?? "",
-                "end": customTimeframe?.end.iso8601String ?? ""
+                "start": start?.iso8601String ?? "",
+                "end": end?.iso8601String ?? ""
             ]
         }
     }
@@ -99,8 +84,8 @@ public func ==(lhs: Timeframe, rhs: Timeframe) -> Bool {
         return true
     case (.LastYear, .LastYear):
         return true
-    case (let .Custom(firstCustomDate), let .Custom(secondCustomDate)):
-        return firstCustomDate == secondCustomDate
+    case (let .Custom(firstStart, firstEnd), let .Custom(secondStart, secondEnd)):
+        return firstStart == secondStart && firstEnd == secondEnd
     default:
         return false
     }

@@ -32,7 +32,7 @@ public struct Client {
         self.connectConfig = connectConfig
     }
     
-    func query(collection: String, parameters: [String: AnyObject], completion: Result<JSON, NSError> -> Void) {
+    func query(collection: String, parameters: [String: AnyObject], completion: Result<JSON, NSError> -> Void) -> Request {
         
         let url = NSURL(string: collection, relativeToURL: queryUrl)! // TODO remove this force un-wrap
         
@@ -55,6 +55,8 @@ public struct Client {
                 completion(Result.Failure(error))
             }
         }
+
+        return request
     }
     
 }

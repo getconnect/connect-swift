@@ -20,14 +20,13 @@ class ViewController: UIViewController {
         
         connect.query("orders")
             .select(["test": .Count])
-            .timeframe(.ThisYear)
+            .timeframe(.LastWeek)
             .groupBy("pizza.type.value")
-            .interval(.Weekly)
             .execute {
                 (result) in
                 switch result {
                 case .Success(let results):
-                    print(results.results.first?.results)
+                    print(results.results.first)
                 case .Failure(let error):
                     print(error)
                 }

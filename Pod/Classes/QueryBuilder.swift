@@ -95,5 +95,6 @@ extension Query: IntervalQueryBuilder {
     public func timeframe(timeframe: Timeframe) -> IntervalQueryBuilder {
         return Query(config: config, select: select, groupBy: groupBy, filter: filter, timeframe: timeframe, interval: interval)
     }
+    
 }
 

@@ -7,14 +7,15 @@
 //
 
 import Foundation
+import Alamofire
 
 public protocol QueryExecuter {
-    func execute(completion: Result<QueryResults, NSError> -> Void)
+    func execute(completion: Result<QueryResults, NSError> -> Void) -> Request
 }
 extension QueryExecuter where Self:QueryBuilder {
     
-    public func execute(completion: Result<QueryResults, NSError> -> Void) {
-        apiClient.query(collectionName, parameters: jsonObject) {
+    public func execute(completion: Result<QueryResults, NSError> -> Void) -> Request {
+        return apiClient.query(collectionName, parameters: jsonObject) {
             (result) in
             switch result {
             case .Success(let json):
@@ -28,12 +29,12 @@ extension QueryExecuter where Self:QueryBuilder {
 }
 
 public protocol IntervalQueryExecuter {
-    func execute(completion: Result<IntervalQueryResults, NSError> -> Void)
+    func execute(completion: Result<IntervalQueryResults, NSError> -> Void) -> Request
 }
 extension IntervalQueryExecuter where Self:IntervalQueryBuilder {
     
-    public func execute(completion: Result<IntervalQueryResults, NSError> -> Void) {
-        apiClient.query(collectionName, parameters: jsonObject) {
+    public func execute(completion: Result<IntervalQueryResults, NSError> -> Void) -> Request {
+        return apiClient.query(collectionName, parameters: jsonObject) {
             (result) in
             switch result {
             case .Success(let json):
