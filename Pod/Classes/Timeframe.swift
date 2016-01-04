@@ -25,6 +25,8 @@ public enum Timeframe {
     case ThisYear
     case LastYear
     case Custom(NSDate?, NSDate?)
+    case Current(RelativeTimeframe)
+    case Previous(RelativeTimeframe)
     
     var jsonObject: AnyObject {
         switch self {
@@ -61,6 +63,10 @@ public enum Timeframe {
                 "start": start?.iso8601String ?? "",
                 "end": end?.iso8601String ?? ""
             ]
+        case .Current(let relative):
+            return ["previous": relative.jsonObject]
+        case .Previous(let relative):
+            return ["current": relative.jsonObject]
         }
     }
 }
@@ -86,6 +92,10 @@ public func ==(lhs: Timeframe, rhs: Timeframe) -> Bool {
         return true
     case (let .Custom(firstStart, firstEnd), let .Custom(secondStart, secondEnd)):
         return firstStart == secondStart && firstEnd == secondEnd
+    case (let .Current(lhsValue), let .Current(rhsValue)):
+        return lhsValue == rhsValue
+    case (let .Previous(lhsValue), let .Previous(rhsValue)):
+        return lhsValue == rhsValue
     default:
         return false
     }
