@@ -19,7 +19,7 @@ extension QueryExecuter where Self:QueryBuilder {
             (result) in
             switch result {
             case .Success(let json):
-                let queryResult = QueryResults(json: json)
+                let queryResult = QueryResults(json: json, query: self as! Query)
                 completion(Result.Success(queryResult))
             case .Failure(let error):
                 completion(Result.Failure(error))
@@ -38,7 +38,7 @@ extension IntervalQueryExecuter where Self:IntervalQueryBuilder {
             (result) in
             switch result {
             case .Success(let json):
-                let intervalQueryResult = IntervalQueryResults(json: json)
+                let intervalQueryResult = IntervalQueryResults(json: json, query: self as! Query)
                 completion(Result.Success(intervalQueryResult))
             case .Failure(let error):
                 completion(Result.Failure(error))

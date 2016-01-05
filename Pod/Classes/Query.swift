@@ -12,11 +12,11 @@ public struct Query {
     
     let config: QueryConfig
     
-    let select: Select
-    let groupBy: GroupBy
-    let filter: Filter
-    let timeframe: Timeframe?
-    let interval: TimeInterval?
+    public let select: Select
+    public let groupBy: GroupBy
+    public let filter: Filter
+    public let timeframe: Timeframe?
+    public let interval: TimeInterval?
     
     public var apiClient: Client {
         return Client(connectConfig: config.connectConfig)
