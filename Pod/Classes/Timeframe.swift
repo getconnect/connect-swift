@@ -64,9 +64,9 @@ public enum Timeframe {
                 "end": end?.iso8601String ?? ""
             ]
         case .Current(let relative):
-            return ["previous": relative.jsonObject]
-        case .Previous(let relative):
             return ["current": relative.jsonObject]
+        case .Previous(let relative):
+            return ["previous": relative.jsonObject]
         }
     }
 }

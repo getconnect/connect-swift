@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ConnectSwift"
-  s.version      = "0.0.9"
+  s.version      = "0.0.10"
   s.summary      = "A declarative swift query language for Connect."
   s.description  = <<-DESC
                     Connect-Swift is a declarative query language for Connect.
