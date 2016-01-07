@@ -57,7 +57,7 @@ public enum Timeframe {
         case .ThisYear:
             return "this_year"
         case .LastYear:
-            return "Last_year"
+            return "last_year"
         case .Custom(let start, let end):
             return [
                 "start": start?.iso8601String ?? "",
