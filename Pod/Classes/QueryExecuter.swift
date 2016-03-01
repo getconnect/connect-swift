@@ -16,10 +16,10 @@ extension QueryExecuter where Self:QueryBuilder {
     
     public func execute(completion: Result<QueryResults, NSError> -> Void) -> Request {
         return apiClient.query(collectionName, parameters: jsonObject) {
-            (result) in
+            (result, cacheKey) in
             switch result {
             case .Success(let json):
-                let queryResult = QueryResults(json: json, query: self as! Query)
+                let queryResult = QueryResults(json: json, query: self as! Query, cacheKey: cacheKey)
                 completion(Result.Success(queryResult))
             case .Failure(let error):
                 completion(Result.Failure(error))
@@ -35,10 +35,10 @@ extension IntervalQueryExecuter where Self:IntervalQueryBuilder {
     
     public func execute(completion: Result<IntervalQueryResults, NSError> -> Void) -> Request {
         return apiClient.query(collectionName, parameters: jsonObject) {
-            (result) in
+            (result, cacheKey) in
             switch result {
             case .Success(let json):
-                let intervalQueryResult = IntervalQueryResults(json: json, query: self as! Query)
+                let intervalQueryResult = IntervalQueryResults(json: json, query: self as! Query, cacheKey: cacheKey)
                 completion(Result.Success(intervalQueryResult))
             case .Failure(let error):
                 completion(Result.Failure(error))

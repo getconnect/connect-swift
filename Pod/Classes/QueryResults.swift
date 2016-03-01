@@ -31,12 +31,14 @@ public struct QueryResults {
     public let metadata: Metadata
     public let results: [QueryResultItem]
     public let resultsJSON: JSON
+    public let cacheKey: String?
     
-    init(json: JSON, query: Query) {
+    init(json: JSON, query: Query, cacheKey: String? = nil) {
         metadata = Metadata(json: json["metadata"])
         results = json["results"].arrayValue.map { $0.dictionaryObject! }
         resultsJSON = json["results"]
         self.query = query
+        self.cacheKey = cacheKey
     }
 }
 
@@ -69,11 +71,13 @@ public struct IntervalQueryResults {
     public let metadata: Metadata
     public let results: [IntervalQueryResultItem]
     public let resultJSON: JSON
+    public let cacheKey: String?
     
-    init(json: JSON, query: Query) {
+    init(json: JSON, query: Query, cacheKey: String? = nil) {
         metadata = Metadata(json: json["metadata"])
         results = json["results"].arrayValue.map { IntervalQueryResultItem(json: $0) }
         resultJSON = json["results"]
         self.query = query
+        self.cacheKey = cacheKey
     }
 }
