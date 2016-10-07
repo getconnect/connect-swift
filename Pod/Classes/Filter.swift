@@ -24,7 +24,7 @@ public enum Comparison {
 }
 public typealias Filter = [String: Comparison]
 
-extension CollectionType where Generator.Element == (String, Comparison) {
+public extension CollectionType where Generator.Element == (String, Comparison) {
     var jsonObject: [String: AnyObject] {
         var map = [String: AnyObject]()
         for (field, comparison) in self {

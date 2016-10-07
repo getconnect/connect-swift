@@ -28,7 +28,7 @@ public enum Timeframe {
     case Current(RelativeTimeframe)
     case Previous(RelativeTimeframe)
     
-    var jsonObject: AnyObject {
+    public var jsonObject: AnyObject {
         switch self {
         case .ThisMinute:
             return "this_minute"

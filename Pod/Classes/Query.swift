@@ -10,13 +10,14 @@ import Foundation
 
 public struct Query {
     
-    let config: QueryConfig
+    public let config: QueryConfig
     
     public let select: Select
     public let groupBy: GroupBy
     public let filter: Filter
     public let timeframe: Timeframe?
     public let interval: TimeInterval?
+    public let customOptions: [String: AnyObject]?
     
     public var apiClient: Client {
         return Client(connectConfig: config.connectConfig)
@@ -36,6 +37,9 @@ public struct Query {
             result["timeframe"] = timeframe.jsonObject
         }
         result["interval"] = interval?.rawValue
+        if let customOptions = customOptions {
+            result = result + customOptions
+        }
         return result
     }
     
@@ -48,9 +52,10 @@ public struct Query {
         
         timeframe = nil
         interval = nil
+        customOptions = nil
     }
     
-    init(config: QueryConfig, select: Select, groupBy: GroupBy, filter: Filter, timeframe: Timeframe?, interval: TimeInterval?) {
+    public init(config: QueryConfig, select: Select, groupBy: GroupBy, filter: Filter, timeframe: Timeframe?, interval: TimeInterval?, customOptions: [String: AnyObject]?) {
         self.config = config
         
         self.select = select
@@ -58,6 +63,7 @@ public struct Query {
         self.filter = filter
         self.timeframe = timeframe
         self.interval = interval
+        self.customOptions = customOptions
     }
     
 }
